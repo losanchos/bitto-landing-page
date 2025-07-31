@@ -1,0 +1,13 @@
+# Nombre de tu proyecto en Cloudflare
+name = "bitto-website"
+
+# Fecha de compatibilidad
+compatibility_date = "2025-07-31"
+
+# --- SECCIÓN PARA CLOUDFLARE PAGES ---
+# Esto le indica a Wrangler que es un sitio estático
+[pages]
+
+# La carpeta que contiene los archivos de tu web (index.html, etc.)
+# En este caso, la carpeta raíz "."
+directory = "."
