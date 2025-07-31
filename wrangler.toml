@@ -4,10 +4,10 @@ name = "bitto-website"
 # Fecha de compatibilidad
 compatibility_date = "2025-07-31"
 
-# --- SECCIÓN PARA CLOUDFLARE PAGES ---
-# Esto le indica a Wrangler que es un sitio estático
-[pages]
+# --- SECCIÓN CORRECTA PARA ARCHIVOS ESTÁTICOS ---
+# La clave correcta es [assets], no [pages].
+[assets]
 
-# La carpeta que contiene los archivos de tu web (index.html, etc.)
-# En este caso, la carpeta raíz "."
+# La carpeta que contiene tus archivos (index.html, etc.).
+# El punto "." significa que es la carpeta raíz del proyecto.
 directory = "."
