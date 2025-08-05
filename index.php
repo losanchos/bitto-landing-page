@@ -98,11 +98,11 @@ if (file_exists($contributions_file)) {
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Bitto - Official Bitmart Mascot on Solana</title>
-    <link rel="icon" type="image/png" href="images/photo_2025-07-31_12-03-41.jpg">
+    <link rel="icon" type="image/png" href="photo_2025-07-31_12-03-41.jpg">
     <link rel="apple-touch-icon" href="images/photo_2025-07-31_12-03-41.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         .wallet-info {
             display: flex;
@@ -139,7 +139,7 @@ if (file_exists($contributions_file)) {
         <nav class="navbar" id="navbar">
             <div class="nav-container">
                 <a href="#home" class="logo">
-                    <img src="images/photo_2025-07-31_12-03-41.jpg" alt="Bitto" class="logo-img">
+                    <img src="photo_2025-07-31_12-03-41.jpg" alt="Bitto" class="logo-img">
                     BITTO
                 </a>
                 <div class="mobile-menu" id="mobile-menu">
@@ -209,7 +209,7 @@ if (file_exists($contributions_file)) {
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="images/photo_2025-07-31_12-03-41.jpg" alt="Bitto Mascot" />
+                    <img src="photo_2025-07-31_12-03-41.jpg" alt="Bitto Mascot" />
                 </div>
             </div>
         </section>
@@ -414,7 +414,7 @@ if (file_exists($contributions_file)) {
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
     <script>
         const chartData = {
             labels: [<?php echo '"' . implode('","', array_column($chart_data, 'time')) . '"'; ?>],
