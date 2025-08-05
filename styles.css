@@ -1,0 +1,791 @@
+:root {
+    --primary: #00AEEF;
+    --secondary: #FFD700;
+    --dark: #0D1117;
+    --light: #ADB5BD;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --border: rgba(0, 174, 239, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--dark);
+    color: #FFFFFF;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    overscroll-behavior: none;
+    padding-bottom: 60px;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+.app-container {
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at top, #1a1f36 0%, var(--dark) 100%);
+}
+
+#bitto-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+#bitto-animation.active {
+    opacity: 1;
+}
+
+#bitto-animation.mobile {
+    height: 150px;
+}
+
+#bitto-animation.desktop {
+    height: 200px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1002;
+    padding: 0.8rem 1rem;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(0, 174, 239, 0.1);
+}
+
+.navbar.scrolled {
+    background: rgba(13, 17, 23, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 174, 239, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo-img {
+    height: 24px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.mobile-menu span {
+    width: 20px;
+    height: 2px;
+    background: #FFFFFF;
+    margin: 2px 0;
+    transition: 0.3s;
+}
+
+.mobile-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.mobile-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 0.5rem 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    z-index: 2;
+}
+
+.hero-content {
+    text-align: center;
+    width: 100%;
+}
+
+.hero-content h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 0.9rem;
+    color: var(--light);
+    margin-bottom: 1.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-align: center;
+    touch-action: manipulation;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--secondary), #FFA500);
+    color: var(--dark);
+}
+
+.secondary-btn {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 174, 239, 0.3);
+}
+
+.contract-address, .wallet-info {
+    background: rgba(0, 174, 239, 0.1);
+    border: 1px solid var(--primary);
+    border-radius: 12px;
+    padding: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.contract-address span, .wallet-info p {
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--secondary);
+    flex: 1;
+    word-break: break-all;
+}
+
+.copy-btn {
+    background: var(--primary);
+    color: var(--dark);
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.8rem;
+}
+
+.copy-btn:hover {
+    background: var(--secondary);
+}
+
+.hero-image {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.hero-image img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 174, 239, 0.3);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.stats {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 0.4rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--light);
+}
+
+.chart-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    height: 250px;
+    width: 100%;
+}
+
+.section {
+    padding: 2rem 0.5rem;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 0.5rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.donate-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.donate-content p, .about-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--light);
+}
+
+.wallet-info {
+    width: 100%;
+    max-width: 500px;
+}
+
+.contributions {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.contribution-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 2fr;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.contribution-item:last-child {
+    border-bottom: none;
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.about-image {
+    text-align: center;
+    width: 100%;
+}
+
+.about-image img {
+    max-width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 174, 239, 0.2);
+}
+
+.tokenomics {
+    background: rgba(0, 174, 239, 0.05);
+}
+
+.tokenomics-grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.tokenomics-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.tokenomics-card h3 {
+    color: var(--secondary);
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.tokenomics-card p {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.how-to-buy-steps {
+    display: grid;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 1rem;
+    border-radius: 12px;
+    border-left: 3px solid var(--primary);
+}
+
+.step-number {
+    background: linear-gradient(135deg, var(--secondary), #FFA500);
+    color: var(--dark);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+}
+
+.step-content h3 {
+    color: #FFFFFF;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.step-content p {
+    color: var(--light);
+    line-height: 1.5;
+    font-size: 0.8rem;
+}
+
+.roadmap {
+    background: rgba(0, 174, 239, 0.05);
+}
+
+.roadmap-timeline {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.roadmap-phase {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.phase-number {
+    background: linear-gradient(135deg, var(--secondary), #FFA500);
+    color: var(--dark);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+}
+
+.roadmap-phase h3 {
+    color: var(--secondary);
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.roadmap-phase p {
+    color: var(--light);
+    line-height: 1.5;
+    font-size: 0.8rem;
+}
+
+.community-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 174, 239, 0.1);
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    color: var(--primary);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.8rem;
+    aspect-ratio: 1/1;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: var(--dark);
+}
+
+.social-link-label {
+    font-size: 0.6rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+    text-align: center;
+}
+
+.footer {
+    background: #000000;
+    padding: 1.5rem 0.5rem;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.footer-social a {
+    color: var(--light);
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--primary);
+}
+
+.disclaimer {
+    font-size: 0.7rem;
+    color: #6C757D;
+    line-height: 1.5;
+}
+
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    display: none;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding: 0 0.5rem;
+}
+
+.mobile-nav.active {
+    display: flex;
+}
+
+.mobile-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--light);
+    text-decoration: none;
+    font-size: 0.7rem;
+    transition: color 0.3s ease;
+    flex: 1;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.mobile-nav .nav-item i {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.mobile-nav .nav-item:hover {
+    color: var(--primary);
+}
+
+.mobile-nav .buy-btn {
+    background: linear-gradient(135deg, var(--secondary), #FFA500);
+    color: var(--dark) !important;
+    border-radius: 12px;
+    padding: 0.5rem;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.copy-notification {
+    position: fixed;
+    bottom: 75px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: var(--dark);
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.copy-notification.show {
+    opacity: 1;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+
+    #bitto-animation {
+        height: 150px;
+    }
+
+    .hero-container {
+        flex-direction: column;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-image img {
+        max-width: 80%;
+    }
+
+    .tokenomics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .how-to-buy-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-timeline {
+        grid-template-columns: 1fr;
+    }
+
+    .donate-content {
+        flex-direction: column;
+    }
+
+    .wallet-info, .contributions {
+        max-width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+
+    #bitto-animation {
+        height: 200px;
+    }
+
+    .hero-container {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .hero-content {
+        text-align: left;
+        width: 50%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-image {
+        width: 50%;
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tokenomics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .how-to-buy-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .roadmap-timeline {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .donate-content {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .wallet-info, .contributions {
+        flex: 1;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+
+    .stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tokenomics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .how-to-buy-steps {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .roadmap-timeline {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+}
